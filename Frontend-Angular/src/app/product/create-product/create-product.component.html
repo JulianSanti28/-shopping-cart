@@ -1,0 +1,53 @@
+
+<div class="container col-md-6">
+    <div class="card">
+        <div class="card-header">
+            <h3>Agregar producto</h3>
+        </div>
+        <div class="card-body">
+            <form  [formGroup]="createForm" (ngSubmit)="guardarProducto()">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" class="form-control" formControlName="nombre" [(ngModel)] = "product.nombre" name="nombre" placeholder="Digite nombre" required>
+                    <div class="alert alert-danger" *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+                        <div class="container-error-message">
+                            Nombre no válido
+                        </div>
+                    </div>
+                    <label for="image">Imagen:</label>
+            
+                    <input type="file" class="form-control" formControlName="image" formControlName="image" name="image" placeholder="Digite imagen" required>
+                    <label for="precio">Precio:</label>
+                    <input type="number" class=" form-control" formControlName="precio" [(ngModel)] = "product.precio"  name="precio" placeholder="Digite precio" required>
+                    <div class="alert alert-danger" *ngIf="precio?.invalid && (precio?.dirty || precio?.touched)">
+                        <div class="container-error-message">
+                            Precio no válido
+                        </div>
+                    </div>
+                    <label for="stock">Stock:</label>
+                    <input type="number" class="form-control" formControlName="stock"  [(ngModel)] = "product.cantidadStock"  name="stock" placeholder="Digite Stock" required>
+                    <div class="alert alert-danger" *ngIf="stock?.invalid && (stock?.dirty || stock?.touched)">
+                        <div class="container-error-message">
+                            Stock no válido
+                        </div>
+                    </div>
+                    <label for="categoria">Categoría:</label>
+                    <select formControlName="categoria" class="form-select" aria-label="Default select example">
+                        <option *ngFor="let categoria of categorias" [value]="categoria.idCategoria">{{categoria.descripcion}}</option>
+                    </select>
+                    <label for="descripcion">Descripción:</label>
+                    <textarea type="text" class="form-control" formControlName="descripcion" [(ngModel)] = "product.descripcion" name="descripcion" placeholder="Digite descripción" required></textarea>
+                    <div class="alert alert-danger" *ngIf="descripcion?.invalid && (descripcion?.dirty || descripcion?.touched)">
+                        <div class="container-error-message">
+                            Decsripción inválida
+                        </div>
+                    </div> 
+                </div>
+
+
+                <br>
+                <button type = "submit" class="btn btn-info">Guardar</button> 
+            </form>
+        </div>
+    </div>
+</div>
